@@ -3,9 +3,13 @@ import size from "../utils/size";
 import { Context } from "../context/Context";
 import { images } from "../utils/images";
 
-const Image = ({ src, index, favorite }) => {
-  const { toggleFavorite } = useContext(Context);
+const Image = ({ image }) => {
+  const { toggleFavorite, addToCart, removeFromCart, cartImages } =
+    useContext(Context);
   const [visible, setVisible] = useState(false);
+  const isSelected = cartImages.find(
+    (image) => image.index === image.index + 1
+  );
 
   //Show heart and cart icons on each image.
   function showIcons(imageIndex) {
@@ -16,22 +20,43 @@ const Image = ({ src, index, favorite }) => {
     });
   }
 
+  function isImageInCart(imageIndex) {
+    return cartImages.some((image) => image.index === imageIndex);
+  }
+
+  function addOrRemoveFromCart(imageIndex) {
+    const isInCart = isImageInCart(imageIndex);
+    console.log(isInCart);
+
+    if (isInCart) {
+      removeFromCart(imageIndex);
+    } else {
+      addToCart(imageIndex);
+    }
+  }
+
   return (
     <div
-      className={`image-container ${size(index)}`}
-      onMouseEnter={() => showIcons(index + 1)}
-      onMouseLeave={() => showIcons(index + 1)}
+      className={`image-container ${size(image.index)}`}
+      onMouseEnter={() => showIcons(image.index)}
+      onMouseLeave={() => showIcons(image.index)}
     >
-      <img src={src} className="image" alt="car" />
+      <img src={image.src} className="image" alt="car" />
 
       <div
         className="icons"
         style={visible ? { visibility: "visible" } : { visibility: "hidden" }}
       >
-        <i className="fa-solid fa-circle-plus"></i>
         <i
-          className={`${favorite ? "fas fa-heart visible" : "far fa-heart"}`}
-          onClick={() => toggleFavorite(index + 1)}
+          className="fa-solid fa-circle-plus"
+          onClick={() => addOrRemoveFromCart(image.index)}
+          style={{ visibility: isImageInCart(image.index) && "visible" }}
+        ></i>
+        <i
+          className={`${
+            image.isFavorite ? "fas fa-heart visible" : "far fa-heart"
+          }`}
+          onClick={() => toggleFavorite(image.index)}
         ></i>
       </div>
     </div>

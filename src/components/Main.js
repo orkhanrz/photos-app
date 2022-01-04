@@ -8,12 +8,7 @@ const Main = () => {
     <main>
       <div className="images-container">
         {toggledImages.map((image, index) => (
-          <Image
-            src={image.src}
-            index={index}
-            key={index}
-            favorite={image.isFavorite}
-          />
+          <Image image={image} key={image.index} />
         ))}
       </div>
     </main>

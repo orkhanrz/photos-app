@@ -85,6 +85,10 @@ main {
   color: rgb(250, 225, 0);
 }
 
+.fa-cart-plus {
+  color: rgb(250, 212, 0);
+}
+
 .fa-heart {
   color: red;
 }
