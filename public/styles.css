@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
 *,
 *::after,
@@ -6,6 +6,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+p {
+  font-size: calc(0.85rem + 0.25vw);
+  color: black;
+}
+
+i {
+  cursor: pointer;
+}
+
+button {
+  font-family: inherit;
 }
 
 body {
@@ -29,6 +47,10 @@ header::after {
   right: 2em;
   height: 1px;
   background-color: rgba(33, 120, 251, 0.5);
+}
+
+header .logo {
+  cursor: pointer;
 }
 
 main {
@@ -77,10 +99,6 @@ main {
   left: 0;
 }
 
-.icons > * {
-  cursor: pointer;
-}
-
 .fa-circle-plus {
   color: rgb(250, 225, 0);
 }
@@ -89,10 +107,95 @@ main {
   color: rgb(250, 212, 0);
 }
 
-.fa-heart {
-  color: red;
+.fa-heart,
+.fa-times-circle {
+  color: rgb(250, 79, 0);
 }
 
 .visible {
   visibility: visible;
+}
+
+/* Cart Page */
+
+.cart-empty {
+  text-align: center;
+  color: rgb(250, 79, 0);
+}
+
+.cart-image-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-block: 1em;
+  position: relative;
+}
+
+.cart-image-wrapper:first-child {
+  padding-top: 0;
+}
+
+.cart-image-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  left: 0;
+  right: 0;
+  background-color: rgba(187, 187, 187, 0.5);
+}
+
+.cart-image img {
+  width: calc(5em + 12vw);
+  height: auto;
+}
+
+.cart-image-details {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-inline: 1em;
+}
+
+.cart-image-price > span {
+  color: rgba(33, 120, 251, 1);
+  font-weight: 600;
+}
+
+.cart-image-desc {
+  margin-block: 0.5em;
+  font-size: calc(0.75rem + 0.25vw);
+}
+
+.cart-image-save {
+  padding: 0.5em;
+  border: 1px solid rgb(250, 79, 0);
+  border-radius: 4px;
+  background-color: white;
+  color: rgb(250, 79, 0);
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.cart-image-save .fa-heart {
+  margin-right: 4px;
+  font-size: 0.85rem;
+}
+
+.cart-image-save:hover,
+.saved {
+  background-color: rgb(250, 79, 0);
+  color: white;
+}
+
+.cart-image-save:hover .fa-heart {
+  color: white;
+}
+
+.saved > * {
+  color: white;
+}
+
+.cart-image-remove {
+  margin-left: auto;
 }

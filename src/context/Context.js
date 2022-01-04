@@ -27,7 +27,21 @@ function ContextProvider({ children }) {
         return image;
       }
     });
+
+    const modifiedCartImages = cartImages.map((image) => {
+      if (image.index === imageIndex) {
+        return {
+          ...image,
+          isFavorite: !image.isFavorite,
+        };
+      } else {
+        return image;
+      }
+    });
+
     setToggledImages(modifiedImages);
+    setCartImages(modifiedCartImages);
+
     localStorage.setItem("images", JSON.stringify(modifiedImages));
   }
 
@@ -47,8 +61,6 @@ function ContextProvider({ children }) {
     );
     setCartImages(updatedCart);
   }
-
-  console.log(cartImages);
 
   return (
     <Context.Provider

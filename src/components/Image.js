@@ -7,9 +7,6 @@ const Image = ({ image }) => {
   const { toggleFavorite, addToCart, removeFromCart, cartImages } =
     useContext(Context);
   const [visible, setVisible] = useState(false);
-  const isSelected = cartImages.find(
-    (image) => image.index === image.index + 1
-  );
 
   //Show heart and cart icons on each image.
   function showIcons(imageIndex) {
@@ -26,7 +23,6 @@ const Image = ({ image }) => {
 
   function addOrRemoveFromCart(imageIndex) {
     const isInCart = isImageInCart(imageIndex);
-    console.log(isInCart);
 
     if (isInCart) {
       removeFromCart(imageIndex);
