@@ -5,14 +5,14 @@ const CartItem = ({ image }) => {
   const { removeFromCart, toggleFavorite } = useContext(Context);
 
   return (
-    <div className="cart-image-wrapper">
+    <div className="cart-image-container">
       <div className="cart-image">
         <img src={image.src} />
       </div>
 
       <div className="cart-image-details">
         <p className="cart-image-price">
-          Total: <span>$4.99</span>
+          Price: <span>$4.99</span>
         </p>
         <p className="cart-image-desc">{image.desc}</p>
         <button

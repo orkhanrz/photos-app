@@ -62,6 +62,15 @@ function ContextProvider({ children }) {
     setCartImages(updatedCart);
   }
 
+  function emptyCart() {
+    setCartImages([]);
+    const removeFavoriteImages = toggledImages.map((image) => {
+      return { ...image, isFavorite: false };
+    });
+    setToggledImages(removeFavoriteImages);
+    localStorage.setItem("images", JSON.stringify(removeFavoriteImages));
+  }
+
   return (
     <Context.Provider
       value={{
@@ -70,6 +79,7 @@ function ContextProvider({ children }) {
         addToCart,
         removeFromCart,
         cartImages,
+        emptyCart,
       }}
     >
       {children}

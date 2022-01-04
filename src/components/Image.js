@@ -44,7 +44,9 @@ const Image = ({ image }) => {
         style={visible ? { visibility: "visible" } : { visibility: "hidden" }}
       >
         <i
-          className="fa-solid fa-circle-plus"
+          className={`fa-solid fa-circle-plus ${
+            isImageInCart(image.index) && "incart"
+          }`}
           onClick={() => addOrRemoveFromCart(image.index)}
           style={{ visibility: isImageInCart(image.index) && "visible" }}
         ></i>

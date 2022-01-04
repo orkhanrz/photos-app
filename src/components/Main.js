@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <main>
       <div className="images-container">
-        {toggledImages.map((image, index) => (
+        {toggledImages.map((image) => (
           <Image image={image} key={image.index} />
         ))}
       </div>

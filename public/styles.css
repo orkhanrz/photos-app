@@ -20,6 +20,7 @@ p {
 
 i {
   cursor: pointer;
+  font-size: 1.5rem;
 }
 
 button {
@@ -67,15 +68,24 @@ main {
 
 .images-container {
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-auto-rows: minmax(50px, auto);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-flow: dense;
   grid-gap: 0.5em;
 }
 
+@media screen and (max-width: 550px) {
+  .images-container {
+    grid-template-columns: unset;
+  }
+  i {
+    font-size: 1.25rem;
+  }
+}
+
 .image {
-  height: auto;
+  height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .image-container {
@@ -100,7 +110,7 @@ main {
 }
 
 .fa-circle-plus {
-  color: rgb(250, 225, 0);
+  color: rgb(0, 153, 255);
 }
 
 .fa-cart-plus {
@@ -116,6 +126,10 @@ main {
   visibility: visible;
 }
 
+.incart {
+  color: rgb(250, 212, 0);
+}
+
 /* Cart Page */
 
 .cart-empty {
@@ -123,7 +137,7 @@ main {
   color: rgb(250, 79, 0);
 }
 
-.cart-image-wrapper {
+.cart-image-container {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -131,11 +145,11 @@ main {
   position: relative;
 }
 
-.cart-image-wrapper:first-child {
+.cart-image-container:first-child {
   padding-top: 0;
 }
 
-.cart-image-wrapper::after {
+.cart-image-container::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -170,7 +184,7 @@ main {
 .cart-image-save {
   padding: 0.5em;
   border: 1px solid rgb(250, 79, 0);
-  border-radius: 4px;
+  border-radius: 5px;
   background-color: white;
   color: rgb(250, 79, 0);
   cursor: pointer;
@@ -198,4 +212,42 @@ main {
 
 .cart-image-remove {
   margin-left: auto;
+  height: min-content;
+}
+
+.cart-images {
+  width: 100%;
+}
+
+.cart-images-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.place-order {
+  text-align: center;
+  display: inline;
+  border: 1px solid rgba(33, 120, 251, 1);
+  color: rgba(33, 120, 251, 1);
+  background-color: white;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: calc(0.825rem + 0.25vw);
+  margin-top: 1em;
+  cursor: pointer;
+}
+
+.place-order:hover,
+.place-order:focus {
+  color: white;
+  background-color: rgba(33, 120, 251, 1);
+}
+
+.transaction-page-message {
+  padding: 1em 3em;
+  font-size: calc(0.5rem + 0.5vw);
 }
